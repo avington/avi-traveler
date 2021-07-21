@@ -1,5 +1,4 @@
-import { FunctionComponent, MouseEvent, SetStateAction, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { FunctionComponent, useState } from 'react';
 import { Container, Menu, MenuItemProps } from 'semantic-ui-react';
 import styles from './outer-chrome.module.scss';
 
@@ -21,32 +20,23 @@ export const OuterChrome: FunctionComponent<OuterChromeProps> = (props) => {
   }
 
   return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
-      <div className={styles.outer}>
-        <div className="ui vertically padded grid">
-          <header className="sixteen wide column" style={{ paddingTop: 0 }}>
-            <Menu stackable>
-              <Menu.Item header>Our Company</Menu.Item>
-              <Menu.Item name="places" active={activeItem === 'places'} onClick={handleItemClick}>
-                Places
-              </Menu.Item>
-              <Menu.Menu position="right">
-                <Menu.Item
-                  name="logout"
-                  active={activeItem === 'logout'}
-                  onClick={handleItemClick}
-                />
-              </Menu.Menu>
-            </Menu>
-          </header>
-          <main className={styles.main}>
-            <Container fluid>{props?.children}</Container>
-          </main>
-        </div>
+    <div className={styles.outer}>
+      <div className="ui vertically padded grid">
+        <header className="sixteen wide column" style={{ paddingTop: 0 }}>
+          <Menu stackable>
+            <Menu.Item header>Our Company</Menu.Item>
+            <Menu.Item name="places" active={activeItem === 'places'} onClick={handleItemClick}>
+              Places
+            </Menu.Item>
+            <Menu.Menu position="right">
+              <Menu.Item name="logout" active={activeItem === 'logout'} onClick={handleItemClick} />
+            </Menu.Menu>
+          </Menu>
+        </header>
+        <main className={styles.main}>
+          <Container fluid>{props?.children}</Container>
+        </main>
       </div>
-    </>
+    </div>
   );
 };
