@@ -1,15 +1,15 @@
-import styles from './app.module.scss';
-import { OuterChrome } from '@avi-traveler/ui';
-
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+import { Provider } from 'react-redux';
+import store from '../store/store';
+import AppFirebase from './app-firebase/app-firebase';
 import AppRouter from './app-router/app-router';
 
 export function App() {
   return (
-    <OuterChrome>
-      <AppRouter></AppRouter>
-    </OuterChrome>
+    <AppFirebase>
+      <Provider store={store}>
+        <AppRouter></AppRouter>
+      </Provider>
+    </AppFirebase>
   );
 }
 

@@ -40,3 +40,4 @@ Thumbs.db
 
 #config
 libs/ui/src/lib/config
+libs/config/src/lib/settings
